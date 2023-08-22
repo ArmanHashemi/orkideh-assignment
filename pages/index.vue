@@ -1,6 +1,8 @@
 <!-- components/MarvelCharacters.vue -->
 <template>
   <div class="relative">
+    <SearchCharacter :is-open="isDialogOpen" :close="closeDialog" />
+
     <div v-if="loading" class="text-center py-4">
       Loading...
     </div>
@@ -20,6 +22,9 @@
         <button :disabled="offset === 0" class="p-2 bg-blue-500 text-white rounded mx-2" @click="loadPreviousPage">
           &larr; Previous
         </button>
+        <button class="bg-red-500 text-white p-2 rounded-full" @click="openDialog">
+          Search
+        </button>
         <button :disabled="offset + limit >= total" class="p-2 bg-blue-500 text-white rounded mx-2" @click="loadNextPage">
           Next &rarr;
         </button>
@@ -32,12 +37,21 @@
 import { ref, onMounted } from 'vue'
 import { MarvelCharacter, MarvelData } from '~/services/model/characters'
 import { getMarvelCharacters } from '~/services/apis/apis'
+import SearchCharacter from '~/components/SearchCharacter.vue'
 
 const loading = ref<boolean>(true)
 const characters = ref<MarvelCharacter[]>([])
 const limit = ref<number>(10)
 const offset = ref<number>(0)
 const total = ref<number>(0)
+
+const isDialogOpen = ref<boolean>(false)
+const openDialog = () => {
+  isDialogOpen.value = true
+}
+const closeDialog = () => {
+  isDialogOpen.value = false
+}
 
 const fetchData = async () => {
   loading.value = true
