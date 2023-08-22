@@ -10,3 +10,8 @@ export const getCharacterDetails = async (characterId: number): Promise<MarvelCh
   const response = await fetchApi(`/characters/${characterId}?`)
   return response.data.results[0]
 }
+
+export const getCharacterComics = async (characterId: number): Promise<Comics[]> => {
+  const response = await fetchApi(`/characters/${characterId}/comics?`)
+  return response.data.results
+}
