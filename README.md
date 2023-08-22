@@ -3,8 +3,13 @@
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
+1.Copy the Example Environment File:
 
-Make sure to install the dependencies:
+```bash
+cp env.example .env
+````
+
+2.Make sure to install the dependencies:
 
 ```bash
 # npm
@@ -19,7 +24,7 @@ yarn install
 
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+3.Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
