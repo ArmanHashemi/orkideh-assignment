@@ -5,12 +5,14 @@
       Loading...
     </div>
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div v-for="character in characters" :key="character.id" class="p-4 border rounded shadow hover:bg-blue-200 cursor-pointer" @click="getCharacterDetails(character.id)">
-        <img :src="character.thumbnail.path + '.' + character.thumbnail.extension" alt="" class="w-full h-48 object-cover">
-        <h2 class="text-xl mt-4">
-          {{ character.name }}
-        </h2>
-        <p>{{ character.description || 'Description not available' }}</p>
+      <div v-for="character in characters" :key="character.id" class="p-4 border rounded shadow hover:bg-blue-200 cursor-pointer">
+        <nuxt-link :to="`/characters/${character.id}`">
+          <img :src="character.thumbnail.path + '.' + character.thumbnail.extension" alt="" class="w-full h-48 object-cover">
+          <h2 class="text-xl mt-4">
+            {{ character.name }}
+          </h2>
+          <p>{{ character.description || 'Description not available' }}</p>
+        </nuxt-link>
       </div>
     </div>
     <div v-if="!loading" class="w-full flex mt-4 flex justify-center fixed bottom-3">
@@ -53,10 +55,6 @@ const loadNextPage = () => {
 const loadPreviousPage = () => {
   offset.value = Math.max(0, offset.value - limit.value)
   fetchData()
-}
-
-const getCharacterDetails = (id: number) => {
-  console.log(id)
 }
 
 onMounted(fetchData)
