@@ -15,3 +15,8 @@ export const getCharacterComics = async (characterId: number): Promise<Comics[]>
   const response = await fetchApi(`/characters/${characterId}/comics?`)
   return response.data.results
 }
+
+export const getCharacterSeries = async (characterId: number): Promise<Series[]> => {
+  const response = await fetchApi(`/characters/${characterId}/series?`)
+  return response.data.results
+}
