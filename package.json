@@ -23,6 +23,7 @@
   "dependencies": {
     "@nuxtjs/eslint-module": "^4.1.0",
     "@pinia/nuxt": "^0.4.11",
+    "md5": "^2.3.0",
     "pinia": "^2.1.6"
   }
 }
