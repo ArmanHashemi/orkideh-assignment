@@ -20,3 +20,8 @@ export const getCharacterSeries = async (characterId: number): Promise<Series[]>
   const response = await fetchApi(`/characters/${characterId}/series?`)
   return response.data.results
 }
+
+export const searchCharacterByName = async (name: string): Promise<MarvelCharacter[]> => {
+  const response = await fetchApi(`/characters?nameStartsWith=${name}`)
+  return response.data.results
+}
