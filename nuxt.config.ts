@@ -23,5 +23,13 @@ export default defineNuxtConfig({
 
   imports: {
     dirs: ['./stores']
+  },
+
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.NUXT_API_BASE_URL || '',
+      publicKey: process.env.NUXT_MARVEL_API_PUBLIC_KEY || '',
+      privateKey: process.env.NUXT_MARVEL_API_PRIVATE_KEY || ''
+    }
   }
 })
